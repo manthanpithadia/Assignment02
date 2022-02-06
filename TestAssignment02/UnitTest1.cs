@@ -7,6 +7,20 @@ namespace TestAssignment02
     public class ConversionTest
     {
 
+        [Test]
+        public void ValidateInput_InputIsLessThanZero_ReturnsFalse()
+        {
+            //Arrange           
+            var program = new Program();
+
+            //Act
+            var result = program.validateInput("-1");
+
+            //Assert
+            Assert.AreEqual(result,false);
+        }
+
+
 
         [Test]
         public void ConvertCelciusToFahrenheit_TempInCelcius_ReturnsFahrenheit()
@@ -20,7 +34,7 @@ namespace TestAssignment02
             var result = conversion.ConvertCelciusToFahrenheit();
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]
@@ -35,7 +49,7 @@ namespace TestAssignment02
             var result = conversion.ConvertCelciusToKelvin();
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]
@@ -50,7 +64,7 @@ namespace TestAssignment02
             var result = conversion.ConvertFahrenheitToCelsius();
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]
@@ -65,7 +79,7 @@ namespace TestAssignment02
             var result = conversion.ConvertFahrenheitToKelvin();
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]
@@ -80,7 +94,7 @@ namespace TestAssignment02
             var result = conversion.ConvertKelvinToCelsius();
 
             //Assert
-            Assert.AreEqual(expectedResult, result);
+            Assert.AreEqual(result, expectedResult);
         }
 
         [Test]

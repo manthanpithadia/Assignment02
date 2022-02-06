@@ -2,8 +2,9 @@
 
 namespace Assignment02
 {
-    class Program
+    public class Program
     {
+        int num;
         static void Main(string[] args)
         {
             Program p = new Program();
@@ -11,16 +12,19 @@ namespace Assignment02
         }
 
         public void init() {
+            
+            //Initializing num value
+            num = 0;
+
             Console.WriteLine("Please enter temprature value*");
             Console.WriteLine("Note: Value must be greater than zero and should be an integer number");
             newLine();
 
-            //Validation
-            int num;
+            //Validation            
             do
             {
                 Console.WriteLine("enter here:");
-            } while (!int.TryParse(Console.ReadLine(), out num) || !(num > 0));
+            } while (validateInput(Console.ReadLine()));
 
             //Creating object
             Conversion objConversion = new Conversion(num);
@@ -30,17 +34,25 @@ namespace Assignment02
             Console.WriteLine("output:");
             Console.WriteLine("-------");
             newLine();
-            Console.WriteLine($"°C to °F :{round(objConversion.ConvertCelciusToFahrenheit())}");
-            Console.WriteLine($"°C to K  :{round(objConversion.ConvertCelciusToKelvin())}");
-            Console.WriteLine($"°F to °C :{round(objConversion.ConvertFahrenheitToCelsius())}");
-            Console.WriteLine($"°F to K  :{round(objConversion.ConvertFahrenheitToKelvin())}");
-            Console.WriteLine($"K to °C  :{round(objConversion.ConvertKelvinToCelsius())}");
-            Console.WriteLine($"K to °F  :{round(objConversion.ConvertKelvinToFahrenheit())}");
+            Console.WriteLine($" {num} °C to °F :{round(objConversion.ConvertCelciusToFahrenheit())}");
+            Console.WriteLine($" {num} °C to K  :{round(objConversion.ConvertCelciusToKelvin())}");
+            Console.WriteLine($" {num} °F to °C :{round(objConversion.ConvertFahrenheitToCelsius())}");
+            Console.WriteLine($" {num} °F to K  :{round(objConversion.ConvertFahrenheitToKelvin())}");
+            Console.WriteLine($" {num} K to °C  :{round(objConversion.ConvertKelvinToCelsius())}");
+            Console.WriteLine($" {num} K to °F  :{round(objConversion.ConvertKelvinToFahrenheit())}");
             newLine();
         }
         public void newLine() => Console.WriteLine("");
 
         public double round(double value) => Math.Round(value,2);
+
+        public bool validateInput(string input) {
+
+            if (!int.TryParse(input, out num) || !(num > 0)) {
+                return true;
+            }
+            return false;
+        }
         
     }
 }
