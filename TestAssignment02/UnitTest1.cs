@@ -1,18 +1,102 @@
+using Assignment02;
 using NUnit.Framework;
+using System;
 
 namespace TestAssignment02
 {
-    public class Tests
+    public class ConversionTest
     {
-        [SetUp]
-        public void Setup()
+
+
+        [Test]
+        public void ConvertCelciusToFahrenheit_TempInCelcius_ReturnsFahrenheit()
         {
+            //Arrange
+            var testData = 5;
+            var expectedResult = 41;
+            var conversion = new Conversion(testData);
+            
+            //Act
+            var result = conversion.ConvertCelciusToFahrenheit();
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
         }
 
         [Test]
-        public void Test1()
+        public void ConvertCelciusToKelvin_TempInCelcius_ReturnsKelvin()
         {
-            Assert.Pass();
+            //Arrange
+            var testData = 5;
+            var expectedResult = 278.15;
+            var conversion = new Conversion(testData);
+
+            //Act
+            var result = conversion.ConvertCelciusToKelvin();
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
         }
+
+        [Test]
+        public void ConvertFahrenheitToCelcius_TempInFahrenheit_ReturnsCelcius()
+        {
+            //Arrange
+            var testData = 5;
+            var expectedResult = -15;
+            var conversion = new Conversion(testData);
+
+            //Act
+            var result = conversion.ConvertFahrenheitToCelsius();
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void ConvertFahrenheitToKelvin_TempInFahrenheit_ReturnsKelvin()
+        {
+            //Arrange
+            var testData = 5;
+            var expectedResult = 258.5;
+            var conversion = new Conversion(testData);
+
+            //Act
+            var result = conversion.ConvertFahrenheitToKelvin();
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void ConvertKelvinToCelcius_TempInKelvin_ReturnsCelcius()
+        {
+            //Arrange
+            var testData = 5;
+            var expectedResult = -268.15;
+            var conversion = new Conversion(testData);
+
+            //Act
+            var result = conversion.ConvertKelvinToCelsius();
+
+            //Assert
+            Assert.AreEqual(expectedResult, result);
+        }
+
+        [Test]
+        public void ConvertKelvinToFahrenheit_TempInKelvin_ReturnsFahrenheit()
+        {
+            //Arrange
+            var testData = 5;
+            var expectedResult = -450.67;
+            var conversion = new Conversion(testData);
+
+            //Act
+            var result = conversion.ConvertKelvinToFahrenheit();
+
+            //Assert
+            Assert.AreEqual(Math.Round(result, 2), expectedResult );
+        }
+
     }
 }
