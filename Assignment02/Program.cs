@@ -6,7 +6,7 @@ namespace Assignment02
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("Init Git Repository");
         }
     }
 }
