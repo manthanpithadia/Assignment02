@@ -17,7 +17,7 @@ namespace TestAssignment02
             var result = program.validateInput("-1");
 
             //Assert
-            Assert.AreEqual(result,false);
+            Assert.IsTrue(result);            
         }
 
 
