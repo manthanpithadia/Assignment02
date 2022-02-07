@@ -15,15 +15,31 @@ namespace Assignment02
             
             //Initializing num value
             num = 0;
+            int option;
 
-            Console.WriteLine("Please enter temprature value*");
-            Console.WriteLine("Note: Value must be greater than zero and should be an integer number");
-            newLine();
-
-            //Validation            
             do
             {
-                Console.WriteLine("enter here:");
+                Console.WriteLine("Please Select options from below");
+                Console.WriteLine("1. Convert Celsius to Fahrenheit");
+                Console.WriteLine("2. Convert Celsius to Kelvin");
+                Console.WriteLine("3. Convert Fahrenheit to Celsius");
+                Console.WriteLine("4. Convert Fahrenheit to Kelvin ");
+                Console.WriteLine("5. Convert Kelvin to Celsius");
+                Console.WriteLine("6. Convert Kelvin to Fahrenheit");
+                Console.WriteLine("7. Exit");
+                newLine();
+
+                do {
+                    Console.WriteLine("select option:");
+                } while (!int.TryParse(Console.ReadLine(), out option) || !(option>0 && option<8));
+                newLine();
+                
+                if (option == 7) break;
+
+                Console.WriteLine("Please enter temprature value*");
+                Console.WriteLine("Note: Value must be greater than zero and should be an integer number");
+                Console.WriteLine("Enter temp:");
+
             } while (validateInput(Console.ReadLine()));
 
             //Creating object
@@ -34,13 +50,31 @@ namespace Assignment02
             Console.WriteLine("output:");
             Console.WriteLine("-------");
             newLine();
-            Console.WriteLine($" {num} °C to °F :{round(objConversion.ConvertCelciusToFahrenheit())}");
-            Console.WriteLine($" {num} °C to K  :{round(objConversion.ConvertCelciusToKelvin())}");
-            Console.WriteLine($" {num} °F to °C :{round(objConversion.ConvertFahrenheitToCelsius())}");
-            Console.WriteLine($" {num} °F to K  :{round(objConversion.ConvertFahrenheitToKelvin())}");
-            Console.WriteLine($" {num} K to °C  :{round(objConversion.ConvertKelvinToCelsius())}");
-            Console.WriteLine($" {num} K to °F  :{round(objConversion.ConvertKelvinToFahrenheit())}");
-            newLine();
+            switch (option) {
+                case 1:
+                    Console.WriteLine($" {num} °C to °F :{round(objConversion.ConvertCelciusToFahrenheit())}");
+                    break;
+                case 2:
+                    Console.WriteLine($" {num} °C to K  :{round(objConversion.ConvertCelciusToKelvin())}");
+                    break;
+                case 3:
+                    Console.WriteLine($" {num} °F to °C :{round(objConversion.ConvertFahrenheitToCelsius())}");
+                    break;
+                case 4:
+                    Console.WriteLine($" {num} °F to K  :{round(objConversion.ConvertFahrenheitToKelvin())}");
+                    break;
+                case 5:
+                    Console.WriteLine($" {num} K to °C  :{round(objConversion.ConvertKelvinToCelsius())}");
+                    break;
+                case 6:
+                    Console.WriteLine($" {num} K to °F  :{round(objConversion.ConvertKelvinToFahrenheit())}");
+                    break;
+                case 7:
+                    Console.WriteLine("Exit");
+                    break;
+
+            }                       
+
         }
         public void newLine() => Console.WriteLine("");
 

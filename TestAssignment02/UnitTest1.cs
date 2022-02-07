@@ -4,10 +4,8 @@ using System;
 
 namespace TestAssignment02
 {
-    public class ConversionTest
+    public class ConversionTestOld
     {
-
-
         [Test]
         public void ValidateInput_InputIsLessThanZero_ReturnsFalse()
         {
@@ -101,22 +99,7 @@ namespace TestAssignment02
 
         //TestCaseForFunction02: Test Cases for ConvertCelciusToKelvin
         [Test]
-        public void ConvertCelciusToKelvin_TempInCelcius_ReturnsKelvin()
-        {
-            //Arrange
-            var testData = 5;
-            var expectedResult = 278.15;
-            var conversion = new Conversion(testData);
-
-            //Act
-            var result = conversion.ConvertCelciusToKelvin();
-
-            //Assert
-            Assert.AreEqual(result, expectedResult);
-        }
-
-        [Test]
-        public void ConvertCelciusToKelvin_TempInString_ReturnsKelvin()
+        public void ConvertCelciusToKelvin_TempInDecimal_ReturnsKelvin()
         {
             /*
              * Wrong Input by user
@@ -124,7 +107,7 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = "dummy data";
+            decimal testData = 65.6m;
             double expectedResult = 274.15;
             var program = new Program();
             double result;
@@ -146,7 +129,7 @@ namespace TestAssignment02
         }
 
         [Test]
-        public void ConvertCelciusToKelvin_TempInFloat_ReturnsKelvin()
+        public void ConvertCelciusToKelvin_TempInBool_ReturnsKelvin()
         {
             /*
              * Wrong Input by user
@@ -154,7 +137,37 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = 13.5;
+            bool testData = true;
+            double expectedResult = 274.15;
+            var program = new Program();
+            double result;
+            Conversion conversion;
+
+            //Act            
+            if (!program.validateInput(testData.ToString()))
+            {
+                conversion = new Conversion(program.num);
+            }
+            else
+            {
+                conversion = new Conversion();
+            }
+            result = conversion.ConvertCelciusToKelvin();
+
+            //Assert
+            Assert.AreEqual(Math.Round(result, 2), expectedResult);
+        }
+
+        [Test]
+        public void ConvertCelciusToKelvin_TempInDouble_ReturnsKelvin()
+        {
+            /*
+             * Wrong Input by user
+             * so Class will take default temp value as 1
+             */
+
+            //Arrange
+            double testData = 65.4;
             double expectedResult = 274.15;
             var program = new Program();
             double result;
@@ -179,22 +192,7 @@ namespace TestAssignment02
 
         //TestCaseForFunction03: Test Cases for ConvertFahrenheitToCelcius
         [Test]
-        public void ConvertFahrenheitToCelcius_TempInInt_ReturnsCelcius()
-        {
-            //Arrange
-            var testData = 5;
-            var expectedResult = -15;
-            var conversion = new Conversion(testData);
-
-            //Act
-            var result = conversion.ConvertFahrenheitToCelsius();
-
-            //Assert
-            Assert.AreEqual(result, expectedResult);
-        }
-
-        [Test]
-        public void ConvertFahrenheitToCelcius_TempInString_ReturnsCelcius()
+        public void ConvertFahrenheitToCelcius_TempInLong_ReturnsCelcius()
         {
             /*
              * Wrong Input by user
@@ -202,7 +200,7 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = "dummy data";
+            long testData = 65132321328l;
             double expectedResult = -17;
             var program = new Program();
             double result;
@@ -224,7 +222,7 @@ namespace TestAssignment02
         }
 
         [Test]
-        public void ConvertFahrenheitToCelcius_TempInFloat_ReturnsCelcius()
+        public void ConvertFahrenheitToCelcius_TempInNumAndString_ReturnsCelcius()
         {
             /*
              * Wrong Input by user
@@ -232,7 +230,37 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = 96.4;
+            var testData = 1234 + "dummy data";
+            double expectedResult = -17;
+            var program = new Program();
+            double result;
+            Conversion conversion;
+
+            //Act            
+            if (!program.validateInput(testData.ToString()))
+            {
+                conversion = new Conversion(program.num);
+            }
+            else
+            {
+                conversion = new Conversion();
+            }
+            result = conversion.ConvertFahrenheitToCelsius();
+
+            //Assert
+            Assert.AreEqual(Math.Round(result, 2), expectedResult);
+        }
+
+        [Test]
+        public void ConvertFahrenheitToCelcius_TempInNegativeInt_ReturnsCelcius()
+        {
+            /*
+             * Wrong Input by user
+             * so Class will take default temp value as 1
+             */
+
+            //Arrange
+            var testData = -89;
             double expectedResult = -17;
             var program = new Program();
             double result;
@@ -257,30 +285,15 @@ namespace TestAssignment02
 
         //TestCaseForFunction04: Test Cases for ConvertFahrenheitToKelvin
         [Test]
-        public void ConvertFahrenheitToKelvin_TempInInt_ReturnsKelvin()
-        {
-            //Arrange
-            var testData = 5;
-            var expectedResult = 258.5;
-            var conversion = new Conversion(testData);
-
-            //Act
-            var result = conversion.ConvertFahrenheitToKelvin();
-
-            //Assert
-            Assert.AreEqual(result, expectedResult);
-        }
-
-        [Test]
-        public void ConvertFahrenheitToKelvin_TempInFloat_ReturnsKelvin()
+        public void ConvertFahrenheitToKelvin_TempInNegativeFloat_ReturnsKelvin()
         {
             /*
-             * Wrong Input by user
-             * so Class will take default temp value as 1
-             */
+            * Wrong Input by user
+            * so Class will take default temp value as 1
+            */
 
             //Arrange
-            var testData = 96.4;
+            var testData = -96.4;
             double expectedResult = 256.28;
             var program = new Program();
             double result;
@@ -302,7 +315,7 @@ namespace TestAssignment02
         }
 
         [Test]
-        public void ConvertFahrenheitToKelvin_TempInString_ReturnsKelvin()
+        public void ConvertFahrenheitToKelvin_TempNull_ReturnsKelvin()
         {
             /*
              * Wrong Input by user
@@ -310,7 +323,37 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = "dummy data";
+            Nullable<int> testData = null;
+            double expectedResult = 256.28;
+            var program = new Program();
+            double result;
+            Conversion conversion;
+
+            //Act            
+            if (!program.validateInput(testData.ToString()))
+            {
+                conversion = new Conversion(program.num);
+            }
+            else
+            {
+                conversion = new Conversion();
+            }
+            result = conversion.ConvertFahrenheitToKelvin();
+
+            //Assert
+            Assert.AreEqual(Math.Round(result, 2), expectedResult);
+        }
+
+        [Test]
+        public void ConvertFahrenheitToKelvin_TempZero_ReturnsKelvin()
+        {
+            /*
+             * Wrong Input by user
+             * so Class will take default temp value as 1
+             */
+
+            //Arrange
+            var testData = 0;
             double expectedResult = 256.28;
             var program = new Program();
             double result;
@@ -336,22 +379,7 @@ namespace TestAssignment02
 
         //TestCaseForFunction05: Test Cases for ConvertKelvinToCelcius
         [Test]
-        public void ConvertKelvinToCelcius_TempInInt_ReturnsCelcius()
-        {
-            //Arrange
-            var testData = 5;
-            var expectedResult = -268.15;
-            var conversion = new Conversion(testData);
-
-            //Act
-            var result = conversion.ConvertKelvinToCelsius();
-
-            //Assert
-            Assert.AreEqual(result, expectedResult);
-        }
-
-        [Test]
-        public void ConvertKelvinToCelcius_TempInFloat_ReturnsCelcius()
+        public void ConvertKelvinToCelcius_TempInSpecialChar_ReturnsCelcius()
         {
             /*
              * Wrong Input by user
@@ -359,7 +387,7 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = 96.4;
+            var testData = "*/.,#@!%^";
             double expectedResult = -272.15;
             var program = new Program();
             double result;
@@ -381,7 +409,7 @@ namespace TestAssignment02
         }
 
         [Test]
-        public void ConvertKelvinToCelcius_TempInString_ReturnsCelcius()
+        public void ConvertKelvinToCelcius_TempInChar_ReturnsCelcius()
         {
             /*
              * Wrong Input by user
@@ -389,7 +417,37 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = "dummy data";
+            char testData = 'm';
+            double expectedResult = -272.15;
+            var program = new Program();
+            double result;
+            Conversion conversion;
+
+            //Act            
+            if (!program.validateInput(testData.ToString()))
+            {
+                conversion = new Conversion(program.num);
+            }
+            else
+            {
+                conversion = new Conversion();
+            }
+            result = conversion.ConvertKelvinToCelsius();
+
+            //Assert
+            Assert.AreEqual(Math.Round(result, 2), expectedResult);
+        }
+
+        [Test]
+        public void ConvertKelvinToCelcius_TempInNegativeDecimal_ReturnsCelcius()
+        {
+            /*
+             * Wrong Input by user
+             * so Class will take default temp value as 1
+             */
+
+            //Arrange
+            decimal testData = 65.23m;
             double expectedResult = -272.15;
             var program = new Program();
             double result;
@@ -415,15 +473,31 @@ namespace TestAssignment02
 
         //TestCaseForFunction06: Test Cases for ConvertKelvinToFahrenheit
         [Test]
-        public void ConvertKelvinToFahrenheit_TempInInt_ReturnsFahrenheit()
+        public void ConvertKelvinToFahrenheit_TempOne_ReturnsFahrenheit()
         {
-            //Arrange
-            var testData = 5;
-            var expectedResult = -450.67;
-            var conversion = new Conversion(testData);
+            /*
+             * Wrong Input by user
+             * so Class will take default temp value as 1
+             */
 
-            //Act
-            var result = conversion.ConvertKelvinToFahrenheit();
+
+            //Arrange
+            var testData = "1";
+            double expectedResult = -457.87;
+            var program = new Program();
+            double result;
+            Conversion conversion;
+
+            //Act            
+            if (!program.validateInput(testData))
+            {
+                conversion = new Conversion(program.num);
+            }
+            else
+            {
+                conversion = new Conversion();
+            }
+            result = conversion.ConvertKelvinToFahrenheit();
 
             //Assert
             Assert.AreEqual(Math.Round(result, 2), expectedResult);
@@ -431,7 +505,7 @@ namespace TestAssignment02
 
 
         [Test]
-        public void ConvertKelvinToFahrenheit_TempInString_ReturnsFahrenheit()
+        public void ConvertKelvinToFahrenheit_TempInNumAndSpecialChar_ReturnsFahrenheit()
         {
             /*
              * Wrong Input by user
@@ -440,14 +514,14 @@ namespace TestAssignment02
 
           
             //Arrange
-            var testData = "dummy data";
+            var testData = "1321+$^#$%@#%";
             double expectedResult = -457.87;
             var program = new Program();
             double result;
             Conversion conversion;
 
             //Act            
-            if (!program.validateInput("abcd"))
+            if (!program.validateInput(testData))
             {
                 conversion = new Conversion(program.num);               
             }
@@ -462,7 +536,7 @@ namespace TestAssignment02
         }
 
         [Test]
-        public void ConvertKelvinToFahrenheit_TempInFloat_ReturnsFahrenheit()
+        public void ConvertKelvinToFahrenheit_TempEmptyString_ReturnsFahrenheit()
         {
             /*
              * Wrong Input by user
@@ -470,7 +544,7 @@ namespace TestAssignment02
              */
 
             //Arrange
-            var testData = 65.45;
+            string testData = string.Empty;
             double expectedResult = -457.87;
             var program = new Program();
             double result;

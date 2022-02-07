@@ -9,7 +9,6 @@ namespace Assignment02
     public class Conversion : IConversion
     {
         private int temp;
-        public int n;
         public Conversion() { 
             //Initializing temp value=1
             temp = 1; 
@@ -17,11 +16,6 @@ namespace Assignment02
         public Conversion(int temp) { 
             //Initializing temp value with parameterized constructor
             this.temp = temp; 
-        }
-
-        public void test()
-        {
-            n = temp * 2;
         }
 
         //Assuming that temprature is in Celcius
