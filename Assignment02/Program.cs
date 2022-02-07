@@ -4,7 +4,7 @@ namespace Assignment02
 {
     public class Program
     {
-        int num;
+        public int num;
         static void Main(string[] args)
         {
             Program p = new Program();
@@ -27,7 +27,7 @@ namespace Assignment02
             } while (validateInput(Console.ReadLine()));
 
             //Creating object
-            Conversion objConversion = new Conversion(num);
+            Conversion objConversion = new Conversion();
 
             //Printing output
             newLine();

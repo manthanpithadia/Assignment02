@@ -9,6 +9,7 @@ namespace Assignment02
     public class Conversion : IConversion
     {
         private int temp;
+        public int n;
         public Conversion() { 
             //Initializing temp value=1
             temp = 1; 
@@ -16,6 +17,11 @@ namespace Assignment02
         public Conversion(int temp) { 
             //Initializing temp value with parameterized constructor
             this.temp = temp; 
+        }
+
+        public void test()
+        {
+            n = temp * 2;
         }
 
         //Assuming that temprature is in Celcius
@@ -31,7 +37,7 @@ namespace Assignment02
 
 
         //Assuming that temprature is in Fahrenheit
-        public double ConvertFahrenheitToKelvin() => 273.5 + ((temp - 32.0) * 5) / 9.0;
+        public double ConvertFahrenheitToKelvin() => (((temp - 32.0) * 5) / 9) + 273.5;
 
 
         //Assuming that temprature is in Kelvin
@@ -39,6 +45,6 @@ namespace Assignment02
 
 
         //Assuming that temprature is in Kelvin
-        public double ConvertKelvinToFahrenheit() => ((temp - 273.15) * 1.8) + 32;
+        public double ConvertKelvinToFahrenheit() => ((temp - 273.15) * 1.8 ) + 32;
     }
 }
